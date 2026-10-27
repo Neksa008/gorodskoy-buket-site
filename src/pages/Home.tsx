@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { products } from "../data/products";
+import { photoUrl, products } from "../data/products";
 import { brand } from "../data/brand";
 import { ProductCard } from "../components/ProductCard";
 import { FlowerMark } from "../components/FlowerMark";
@@ -7,13 +7,13 @@ import { Reveal } from "../components/Reveal";
 import { Testimonials } from "../components/Testimonials";
 
 const featured = products.filter((p) =>
-  ["white-roses", "buket-liliya", "kompozitsiya-roses", "buket-2"].includes(p.id)
+  ["buket-liliya", "komp-white-roses", "komp-fuchsia", "buket-leopard"].includes(p.id)
 );
 
 const values = [
   {
-    title: "Свежие каждый день",
-    text: "Разгружаем цветы каждое утро — в букете то, что сегодня приехало.",
+    title: "Свежие цветы каждый день",
+    text: "Собираем букеты и композиции из свежих цветов — под ваш повод и бюджет.",
   },
   {
     title: "Фотоотчёт перед доставкой",
@@ -66,11 +66,18 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blush via-cream-deep to-blush-deep" />
-            <FlowerMark className="relative h-40 w-40 text-rose-deep" />
-            <FlowerMark className="absolute right-6 top-8 h-14 w-14 rotate-12 text-forest/70" />
-            <FlowerMark className="absolute bottom-10 left-4 h-10 w-10 -rotate-12 text-gold/80" />
+          <div className="relative mx-auto w-full max-w-[22rem] pb-10 pl-10 sm:max-w-sm">
+            <div className="absolute -right-4 -top-4 h-full w-full rounded-[2rem] bg-gradient-to-br from-blush via-cream-deep to-blush-deep" />
+            <img
+              src={photoUrl("buket-liliya")}
+              alt="Букет с лилией и розовыми розами"
+              className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl shadow-ink/10"
+            />
+            <img
+              src={photoUrl("komp-white-roses")}
+              alt="Композиция из белых роз в крафтовой сумке"
+              className="absolute bottom-0 left-0 aspect-square w-32 rounded-full border-4 border-cream object-cover shadow-lg shadow-ink/10 sm:w-36"
+            />
           </div>
         </div>
       </section>
@@ -120,7 +127,7 @@ export default function Home() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
-              href={brand.vk}
+              href={brand.vkChat}
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-cream px-6 py-3 text-[14px] font-semibold text-forest-deep transition-colors hover:bg-white"

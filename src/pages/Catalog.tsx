@@ -25,7 +25,7 @@ export default function Catalog() {
         <span className="text-[12px] font-semibold uppercase tracking-wide text-forest/70">Каталог</span>
         <h1 className="mt-1 font-display text-[30px] text-ink">Букеты и композиции</h1>
         <p className="mt-2 max-w-xl text-[14px] text-ink-soft">
-          {products.length} позиций в наличии — фильтруйте по категории и цене, чтобы найти то, что нужно.
+          {products.length} позиций в каталоге — фильтруйте по категории и цене, чтобы найти то, что нужно.
         </p>
       </div>
 

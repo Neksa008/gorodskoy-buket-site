@@ -1,21 +1,18 @@
-import { categories, type Product } from "../data/products";
+import { categories, photoUrl, type Product } from "../data/products";
 import { useCart } from "../context/CartContext";
-import { FlowerMark } from "./FlowerMark";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const categoryLabel = categories.find((c) => c.key === product.category)?.label;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white/60">
-      <div
-        className="relative flex h-44 items-center justify-center"
-        style={{ background: `linear-gradient(155deg, ${product.swatch[0]}, ${product.swatch[1]})` }}
-      >
-        <FlowerMark
-          className="h-16 w-16 opacity-80 transition-transform duration-500 group-hover:scale-110"
-          petal="rgba(255,255,255,0.75)"
-          center="rgba(255,255,255,0.95)"
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/60">
+      <div className="aspect-[4/5] overflow-hidden bg-cream-deep">
+        <img
+          src={photoUrl(product.image)}
+          alt={product.name}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">

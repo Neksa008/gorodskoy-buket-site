@@ -17,18 +17,18 @@ export function Testimonials() {
             <FlowerMark className="h-4 w-4 text-rose" />
             <span className="font-semibold text-ink">{reviewsSource.rating}</span>
             <span>
-              · {reviewsSource.count} оценок на {reviewsSource.label}
+              · {reviewsSource.ratings} оценки, {reviewsSource.reviews} отзывов на {reviewsSource.label}
             </span>
           </div>
         </div>
       </Reveal>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {reviews.map((review, i) => (
-          <Reveal key={review.name} delay={i * 80}>
+          <Reveal key={review.name + review.date} delay={(i % 3) * 80}>
             <div className="h-full rounded-2xl border border-line bg-white/70 p-5">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blush text-[13px] font-semibold text-rose-deep">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blush text-[13px] font-semibold uppercase text-rose-deep">
                   {review.name.charAt(0)}
                 </div>
                 <div>
@@ -41,6 +41,19 @@ export function Testimonials() {
           </Reveal>
         ))}
       </div>
+
+      <p className="mt-6 text-[12.5px] text-ink-soft">
+        Отзывы с{" "}
+        <a
+          href={reviewsSource.url}
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-rose-deep underline decoration-line underline-offset-4 hover:decoration-rose"
+        >
+          Яндекс Карт
+        </a>
+        . Карточка магазина там пока размещена под прежним названием «Цветочный Рай».
+      </p>
     </section>
   );
 }

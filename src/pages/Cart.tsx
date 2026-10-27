@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { brand } from "../data/brand";
+import { photoUrl } from "../data/products";
 import { formatOrderText } from "../utils/formatOrder";
 import { usePageTitle } from "../hooks/usePageTitle";
 
@@ -88,12 +89,12 @@ export default function Cart() {
             {copied ? "Скопировано ✓" : "Скопировать заявку"}
           </button>
           <a
-            href={brand.vk}
+            href={brand.vkChat}
             target="_blank"
             rel="noreferrer"
             className="rounded-full bg-forest px-6 py-3 text-[14px] font-semibold text-cream transition-colors hover:bg-forest-deep"
           >
-            Открыть VK
+            Написать в VK
           </a>
           <a
             href={`tel:${brand.phones[0].replace(/[^\d+]/g, "")}`}
@@ -114,7 +115,8 @@ export default function Cart() {
     <div className="mx-auto max-w-4xl px-5 py-12">
       <h1 className="font-display text-[28px] text-ink">Оформление заявки</h1>
       <p className="mt-2 text-[14px] text-ink-soft">
-        Заявка не требует оплаты онлайн прямо сейчас — мы перезвоним, согласуем детали и оформим заказ.
+        Оплата на сайте не нужна. Заполните форму, мы соберём текст заявки, а вам останется отправить его
+        нам в VK или позвонить: после этого мы свяжемся с вами и подтвердим заказ.
       </p>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -124,9 +126,10 @@ export default function Cart() {
               key={product.id}
               className="flex items-center gap-4 rounded-xl border border-line bg-white/60 p-3"
             >
-              <div
-                className="h-14 w-14 flex-none rounded-lg"
-                style={{ background: `linear-gradient(155deg, ${product.swatch[0]}, ${product.swatch[1]})` }}
+              <img
+                src={photoUrl(product.image)}
+                alt=""
+                className="h-14 w-14 flex-none rounded-lg object-cover"
               />
               <div className="flex-1">
                 <div className="text-[14px] font-medium text-ink">{product.name}</div>
@@ -243,7 +246,7 @@ export default function Cart() {
             type="submit"
             className="w-full rounded-full bg-rose py-3 text-[14px] font-semibold text-white transition-colors hover:bg-rose-deep"
           >
-            Отправить заявку
+            Сформировать заявку
           </button>
         </form>
       </div>
